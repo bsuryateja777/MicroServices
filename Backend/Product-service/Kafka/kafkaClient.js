@@ -1,8 +1,9 @@
 const { Kafka } = require("kafkajs");
+require("dotenv").config();
 
 const kafka = new Kafka({
   clientId: "microservices-app",
-  brokers: ["localhost:9092"],
+  brokers: [process.env.KAFKA_BROKER],
 });
 
 module.exports = kafka;

@@ -3,7 +3,7 @@ const axios = require("axios");
 exports.getProductsByIds = async (ids) => {
   try {
     const { data } = await axios.post(
-      "http://localhost:4000/api/products/bulk",
+      `${process.env.GATEWAY_URL}/api/products/bulk`,
       { ids }
     );
 

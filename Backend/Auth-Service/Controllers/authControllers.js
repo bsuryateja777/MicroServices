@@ -2,6 +2,7 @@ const Users = require("../Models/Users");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const axios = require("axios");
+require("dotenv").config();
 
 exports.register = async (req, res) => {
   try {
@@ -33,12 +34,12 @@ exports.register = async (req, res) => {
     // Send as httpOnly cookie
     res.cookie("token", token, {
       httpOnly: true,
-      secure: false, // true in production
+      secure: true, // true in production
       sameSite: "lax",
     });
 
     try {
-      await axios.post("http://localhost:4000/api/wallet/create", {
+      await axios.post(`${process.env.GATEWAY_URL}/api/wallet/create`, {
         userId: user._id,
       });
     } catch (err) {

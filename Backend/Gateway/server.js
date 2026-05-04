@@ -1,13 +1,15 @@
 const express = require("express");
 const cors = require("cors");
 const { createProxyMiddleware } = require("http-proxy-middleware");
+require("dotenv").config();
+
 
 const app = express();
 
 /* CORS */
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: process.env.FE_SERVICE_URL,
     credentials: true,
   }),
 );
@@ -22,12 +24,12 @@ app.use((req, res, next) => {
 app.use(
   "/api/auth",
   createProxyMiddleware({
-    target: "http://localhost:5001/",
+    target: process.env.AUTH_SERVICE_URL,
     changeOrigin: true,
     pathRewrite: {
       "^/api/auth": "",
     },
-    cookieDomainRewrite: "localhost",
+    cookieDomainRewrite: process.env.AUTH_COOKIE_DOMAIN,
   }),
 );
 
@@ -35,12 +37,12 @@ app.use(
 app.use(
   "/api/products",
   createProxyMiddleware({
-    target: "http://localhost:5002",
+    target: process.env.PRODUCT_SERVICE_URL,
     changeOrigin: true,
     pathRewrite: {
       "^/api/products": "",
     },
-    cookieDomainRewrite: "localhost",
+    cookieDomainRewrite: process.env.PRODUCT_COOKIE_DOMAIN,
     logLevel: "debug",
     onProxyReq: (proxyReq, req, res) => {
       if (req.headers.cookie) {
@@ -53,7 +55,7 @@ app.use(
 app.use(
   "/api/cart",
   createProxyMiddleware({
-    target: "http://localhost:5003",
+    target: process.env.CART_SERVICE_URL,
     changeOrigin: true,
     pathRewrite: {
       "^/api/cart": "",
@@ -64,7 +66,7 @@ app.use(
 app.use(
   "/api/orders",
   createProxyMiddleware({
-    target: "http://localhost:5004",
+    target: process.env.ORDER_SERVICE_URL,
     changeOrigin: true,
     pathRewrite: {
       "^/api/orders": "",
@@ -80,7 +82,7 @@ app.use(
 app.use(
   "/api/wallet",
   createProxyMiddleware({
-    target: "http://localhost:5005",
+    target: process.env.WALLET_SERVICE_URL,
     changeOrigin: true,
     pathRewrite: {
       "^/api/wallet": "",
