@@ -5,7 +5,6 @@ import { NavLink } from 'react-router-dom';
 
 export default function Header() {
 
-  let [cartItems, setCartItems] = useState(0);
   const [scrolled, setScrolled] = useState(false);
 
   const navItems = [
