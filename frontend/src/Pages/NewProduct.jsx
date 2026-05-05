@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import axios from "axios";
 import { notifyInfo, notifySuccess } from "../Utils/toastify";
 import { CrossIcon } from "../Utils/Icons";

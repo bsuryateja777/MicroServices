@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
-import { toast } from "react-toastify";
-import { notifyBlack, notifyDark, notifyError, notifySuccess } from "../Utils/toastify";
+import { notifyDark, notifyError, notifySuccess } from "../Utils/toastify";
 
 export default function Register() {
   const [name, setName] = useState("");

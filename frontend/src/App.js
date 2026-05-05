@@ -16,7 +16,7 @@ import NewProduct from './Pages/NewProduct.jsx';
 import AccountCenter from './Pages/AccountCenter.jsx';
 import MyProducts from './Components/MyProducts.jsx';
 
-axios.defaults.baseURL = 'http://localhost:4000';
+axios.defaults.baseURL = process.env.REACT_APP_GATEWAY_URL
 axios.defaults.withCredentials = true;
 
 

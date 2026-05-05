@@ -1,10 +1,8 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { notifyError, notifySuccess } from "../Utils/toastify";
-import { UserContext } from "../UserContext";
 
 export default function CartPage() {
-  const { user } = useContext(UserContext);
 
   const [cartItems, setCartItems] = useState([]);
   const hasInvalidItems = cartItems.some((item) => item.isOutOfStock);

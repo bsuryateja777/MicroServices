@@ -1,4 +1,3 @@
-import React from "react";
 import { MainIcon } from "../Utils/Icons";
 
 export default function Home() {
